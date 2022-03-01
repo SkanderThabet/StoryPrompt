@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="RGJ-b1-7Oq">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
@@ -8,16 +8,16 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--New Story Prompt-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="StoryPrompt" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="AddStoryPromptViewController" customModule="StoryPrompt" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="22" translatesAutoresizingMaskIntoConstraints="NO" id="N3U-7B-tXT">
-                                <rect key="frame" x="20" y="101" width="374" height="653.5"/>
+                                <rect key="frame" x="20" y="145" width="374" height="653.5"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="6VO-Rt-gQM">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="34"/>
@@ -126,7 +126,7 @@
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Generate Story Prompt"/>
                                         <connections>
-                                            <action selector="generateStoryPrompt:" destination="BYZ-38-t0r" eventType="touchUpInside" id="e6T-sX-WnJ"/>
+                                            <action selector="generateStoryPrompt:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5zc-ZH-1EQ"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -140,6 +140,7 @@
                             <constraint firstItem="N3U-7B-tXT" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="57" id="pO1-1x-vzP"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="New Story Prompt" id="90o-oE-TMv"/>
                     <connections>
                         <outlet property="adjectiveTextField" destination="hlM-7b-Whq" id="j81-C2-j5V"/>
                         <outlet property="nounTextField" destination="eGf-zc-VSI" id="DNL-hY-558"/>
@@ -147,9 +148,72 @@
                         <outlet property="numberSlider" destination="0fJ-K3-2LY" id="h8m-UZ-0eK"/>
                         <outlet property="storyPromptImageView" destination="LJs-XV-t8X" id="r0w-sR-NdM"/>
                         <outlet property="verbTextField" destination="mwH-Jl-QyI" id="Aja-zv-obN"/>
+                        <segue destination="G0O-I0-DXE" kind="show" identifier="StoryPrompt" id="SKR-0n-FXT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="928.98550724637687" y="97.767857142857139"/>
+        </scene>
+        <!--Story Prompt View Controller-->
+        <scene sceneID="dHA-ra-eOW">
+            <objects>
+                <viewController id="G0O-I0-DXE" customClass="StoryPromptViewController" customModule="StoryPrompt" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="TD6-Qg-8f0">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="object-badge-banner" translatesAutoresizingMaskIntoConstraints="NO" id="MuC-jD-cEE">
+                                <rect key="frame" x="0.0" y="-52" width="414" height="1000"/>
+                            </imageView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="byr-UD-yP9">
+                                <rect key="frame" x="87" y="393" width="240" height="110"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="110" id="Fgf-Hc-fcQ"/>
+                                </constraints>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="QPW-P9-6hl"/>
+                        <color key="backgroundColor" red="0.0" green="0.89411764709999997" blue="0.59215686270000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="MuC-jD-cEE" firstAttribute="centerX" secondItem="TD6-Qg-8f0" secondAttribute="centerX" id="2BC-wr-CYZ"/>
+                            <constraint firstItem="byr-UD-yP9" firstAttribute="centerX" secondItem="MuC-jD-cEE" secondAttribute="centerX" id="6K6-6K-jNN"/>
+                            <constraint firstItem="MuC-jD-cEE" firstAttribute="centerY" secondItem="TD6-Qg-8f0" secondAttribute="centerY" id="89a-Mt-2WX"/>
+                            <constraint firstItem="MuC-jD-cEE" firstAttribute="width" secondItem="TD6-Qg-8f0" secondAttribute="width" id="aXL-RM-0Wt"/>
+                            <constraint firstItem="byr-UD-yP9" firstAttribute="leading" secondItem="QPW-P9-6hl" secondAttribute="leading" constant="87" id="fRx-VE-K4f"/>
+                            <constraint firstItem="byr-UD-yP9" firstAttribute="centerY" secondItem="TD6-Qg-8f0" secondAttribute="centerY" id="fnB-JR-rQ4"/>
+                            <constraint firstItem="byr-UD-yP9" firstAttribute="centerX" secondItem="TD6-Qg-8f0" secondAttribute="centerX" id="iuF-sN-Z1F"/>
+                            <constraint firstItem="byr-UD-yP9" firstAttribute="centerY" secondItem="MuC-jD-cEE" secondAttribute="centerY" id="mDK-QF-Azj"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="sgB-Jg-2Vv"/>
+                    <connections>
+                        <outlet property="storyPrompt_tv" destination="byr-UD-yP9" id="ecK-Pc-KYC"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="G0E-jf-9Iu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1884" y="98"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="oHc-TC-rLZ">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="RGJ-b1-7Oq" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ERe-HR-LjA">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="wSP-rZ-g7d"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aPb-Jv-jWl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="18.840579710144929" y="97.767857142857139"/>
         </scene>
@@ -157,6 +221,7 @@
     <resources>
         <image name="10.circle" catalog="system" width="128" height="121"/>
         <image name="5.circle" catalog="system" width="128" height="121"/>
+        <image name="object-badge-banner" width="1000" height="1000"/>
         <image name="object-object_box-of-books" width="1000" height="1000"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
