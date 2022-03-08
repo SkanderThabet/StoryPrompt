@@ -15,27 +15,6 @@ class StoryPromptTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let storyPrompt1 = StoryPromptEntry()
-        let storyPrompt2 = StoryPromptEntry()
-        let storyPrompt3 = StoryPromptEntry()
-        
-        storyPrompt1.noun = "toaster"
-        storyPrompt1.verb = "attacks"
-        storyPrompt1.adjective = "smelly"
-        storyPrompt1.number = 5
-        
-        storyPrompt2.noun = "toaster"
-        storyPrompt2.verb = "attacks"
-        storyPrompt2.adjective = "smelly"
-        storyPrompt2.number = 5
-        
-        storyPrompt3.noun = "toaster"
-        storyPrompt3.verb = "attacks"
-        storyPrompt3.adjective = "smelly"
-        storyPrompt3.number = 5
-        
-        storyPrompts = [storyPrompt1,storyPrompt2,storyPrompt3]
-        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -77,6 +56,21 @@ class StoryPromptTableViewController: UITableViewController {
             storyPromptViewController.storyPrompt = storyPrompt
         }
     }
+    
+    @IBAction func saveStoryPrompt (unwingSegue: UIStoryboardSegue) {
+        guard let storyPromptViewController = unwingSegue.source as? StoryPromptViewController,
+              let storyPrompt = storyPromptViewController.storyPrompt else {
+                  return
+              }
+        storyPrompts.append(storyPrompt)
+        tableView.reloadData()
+    }
+    
+    @IBAction func cancelStoryPrompt (unwingSegue : UIStoryboardSegue) {
+        
+    }
+    
+    
     /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)

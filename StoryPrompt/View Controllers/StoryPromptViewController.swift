@@ -40,4 +40,7 @@ class StoryPromptViewController: UIViewController {
     }
     */
 
+    @IBAction func cancelStoryPrompt(_ sender: Any) {
+        performSegue(withIdentifier: "CancelStoryPrompt", sender: nil)
+    }
 }
