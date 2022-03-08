@@ -12,35 +12,29 @@ class StoryPromptViewController: UIViewController {
     @IBOutlet weak var storyPrompt_tv: UITextView!
     
     var storyPrompt : StoryPromptEntry?
+    var isNewStoryPrompt = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
+        if isNewStoryPrompt {
+            let saveButton = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveStoryPrompt))
+            let cancelButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelStoryPrompt))
+            
+            navigationItem.rightBarButtonItem = saveButton
+            navigationItem.leftBarButtonItem = cancelButton
+        }
         
         
         storyPrompt_tv.text = storyPrompt?.description 
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        navigationController?.setNavigationBarHidden(true, animated: animated)
-    }
-    override func viewWillDisappear(_ animated: Bool) {
-        navigationController?.setNavigationBarHidden(false, animated: animated)
-    }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
-    @IBAction func cancelStoryPrompt(_ sender: Any) {
+    @objc func cancelStoryPrompt() {
         performSegue(withIdentifier: "CancelStoryPrompt", sender: nil)
+    }
+    @objc func saveStoryPrompt() {
+        performSegue(withIdentifier: "SaveStoryPrompt", sender: nil)
     }
 }
